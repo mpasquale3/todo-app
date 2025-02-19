@@ -14,25 +14,25 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Run Unit Tests') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t ${DOCKER_IMAGE} .'
+                bat 'docker build -t ${DOCKER_IMAGE} .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8080:8080 ${DOCKER_IMAGE}'
+                bat 'docker run -d -p 8080:8080 ${DOCKER_IMAGE}'
             }
         }
     }
