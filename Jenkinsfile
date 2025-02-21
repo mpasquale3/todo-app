@@ -32,7 +32,8 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 8080:8080 %DOCKER_IMAGE%'
+                bat 'docker run -d -p 8081:8080 todo-app:latest'
+
             }
         }
     }
