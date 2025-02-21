@@ -5,7 +5,8 @@ FROM openjdk:21
 WORKDIR /app
 
 # Copy the built .jar file into the container
-COPY target/todo-app-1.0-SNAPSHOT.jar todo-app.jar
+COPY target/todo-app.war todo-app.war
+
 
 # Expose port 8080 for the application
 EXPOSE 8080
