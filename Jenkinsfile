@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'todo-app'
+        DOCKER_IMAGE = 'todo-app:latest'  // Fix: Added 'latest' tag
     }
 
     stages {
@@ -26,13 +26,13 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t ${DOCKER_IMAGE} .'
+                bat 'docker build -t %DOCKER_IMAGE% .' // Fix: Use Windows batch variable syntax
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 8080:8080 ${DOCKER_IMAGE}'
+                bat 'docker run -d -p 8080:8080 %DOCKER_IMAGE%'
             }
         }
     }
